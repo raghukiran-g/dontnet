@@ -1,2 +1,2 @@
 FROM ubuntu:latest
-RUN apt-get install -y curl
+RUN apt-get update -y
