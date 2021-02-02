@@ -24,7 +24,7 @@ jobs:
           java-version: 1.11
 
       - name: Restore dependencies
-        run: dotnet restore /*
+        run: dotnet restore /dotnet
 
       - name: Build
-        run: dotnet build --no-restore /*
+        run: dotnet build --no-restore /dotnet
