@@ -4,14 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'services/account_engine'
-  pull_request:
-    types: [opened, synchronize, reopened]
-    paths:
-      - 'services/account_engine'
-    branches:
-      - master
 
 jobs:
   build:
