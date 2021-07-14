@@ -62,8 +62,8 @@ jobs:
       
       - name: Build docker image
         run: |
-          docker build -t ${DOCKER_IMAGE}:${TAG} -f app/Dockerfile .
-          docker push ${DOCKER_IMAGE}:${TAG}
+          docker build -t raghukiran/app:1.0 -f app/Dockerfile .
+          docker push raghukiran/app:1.0
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
