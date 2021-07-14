@@ -3,4 +3,4 @@ replicaCount: 2
 image:
   repository: raghukiran/app
   pullPolicy: IfNotPresent
-  tag: $(git rev-parse --short HEAD)
+  tag: ebaeff4
