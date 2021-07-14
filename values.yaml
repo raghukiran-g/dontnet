@@ -1,8 +1,6 @@
-NamespaceName: "default"
+NamespaceName: default
 replicaCount: 2
-
 image:
   repository: raghukiran/app
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "07fe98a"
+  tag: ''
