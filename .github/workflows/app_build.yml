@@ -46,3 +46,10 @@ jobs:
           
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+        
+      - name: YQ example!
+
+      - name: Bump docker version in values.yaml
+        uses: chrisdickinson/setup-yq@latest
+        run: |
+          yq --help
