@@ -15,8 +15,8 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=metcalfc/docker-action-examples
-          VERSION=edge
+          DOCKER_IMAGE=${{ secrets.DOCKER_USERNAME }}/app
+          VERSION="1.0"
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/v}
           fi
