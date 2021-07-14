@@ -21,7 +21,7 @@ jobs:
             VERSION=${GITHUB_REF#refs/tags/v}
           fi
           TAGS="${DOCKER_IMAGE}:${VERSION}"
-          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tag::${TAG}
           echo ::set-output name=tags::${TAGS}
 
 
@@ -62,8 +62,8 @@ jobs:
       
       - name: Build docker image
         run: |
-          cd app && docker build . --file Dockerfile --tag ${DOCKER_IMAGE}:${TAGS}
-          docker push ${DOCKER_IMAGE}:${DOCKER_IMAGE}
+          docker build -t ${DOCKER_IMAGE}:${TAG} -f app/Dockerfile .
+          docker push ${DOCKER_IMAGE}:${TAG}
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
