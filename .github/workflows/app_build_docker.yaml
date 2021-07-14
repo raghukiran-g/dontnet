@@ -60,18 +60,15 @@ jobs:
           tree
           ls -la
       
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./app
-          file: ./app/Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.prep.outputs.tags }}
+      - name: Login and build
+        run: |
+          echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USER} --password-stdin docker.io
+          cd app && docker build . --file Dockerfile --tag ${DOCKER_IMAGE}:${TAGS}
+          docker push ${DOCKER_IMAGE}:${DOCKER_IMAGE}
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
      
-          
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
 
       - name: Update Image Version in the related HelmChart values.yaml
         uses: fjogeleit/yaml-update-action@master
