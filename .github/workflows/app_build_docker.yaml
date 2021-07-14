@@ -32,10 +32,5 @@ jobs:
      
 
       - name: Update Image Version in the related HelmChart values.yaml
-        uses: fjogeleit/yaml-update-action@master
-        with:
-          valueFile: 'values.yaml'
-          propertyPath: 'image.tag'
-          value: ${{ steps.prep.outputs.version }}
-          targetBranch: development
-          message: 'Bump docker Image Version to ${{ steps.prep.outputs.version }} for app service' 
+        run: |
+          yq --help
