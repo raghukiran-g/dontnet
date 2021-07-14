@@ -52,7 +52,6 @@ jobs:
         with:
           valueFile: 'values.yaml'
           propertyPath: 'image.tag'
-          value: ${{ steps.docker_build.outputs.digest }}
+          value: ${{ steps.prep.outputs.tags }}
           targetBranch: development
-          createPR: true
-          message: 'Update Image Version to ${{ steps.image.outputs.version }}' 
+          message: 'Bump docker Image Version to ${{ steps.prep.outputs.tags }} for app service' 
