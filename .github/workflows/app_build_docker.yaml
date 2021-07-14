@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Build docker image
-        id: prep
+        id: build
         run: |
           TAG=$(git rev-parse --short HEAD)
           echo ::set-output name=tag::${TAG}
@@ -39,6 +39,6 @@ jobs:
         with:
           valueFile: 'values.yaml'
           propertyPath: 'image.tag'
-          value: ${{ steps.prep.outputs.tag }}
+          value: ${{ steps.build.outputs.tag }}
           branch: charts
-          message: 'Bump docker Image Version to ${{ steps.prep.outputs.tag }} for admin portal'
+          message: 'Bump docker Image Version to ${{ steps.build.outputs.tag }} for admin portal'
