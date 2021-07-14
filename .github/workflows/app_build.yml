@@ -49,7 +49,12 @@ jobs:
         
       - name: YQ example!
 
-      - name: Bump docker version in values.yaml
-        uses: chrisdickinson/setup-yq@latest
-        run: |
-          yq --help
+      - name: Update Image Version in the related HelmChart values.yaml
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'values.yaml'
+          propertyPath: 'backend.version'
+          value: ${{ steps.docker_build.outputs.digest }}
+          targetBranch: development
+          createPR: true
+          message: 'Update Image Version to ${{ steps.image.outputs.version }}' 
