@@ -48,11 +48,17 @@ jobs:
       
       - name: Build and analyze
         run: |
+          pwd
           mkdir -p app/publish
           touch app/publish/testfile
           ls -la
           tree .
 
+      - name: Check contents
+        run: |
+          pwd
+          tree
+          ls -la
       
       - name: Build and push
         id: docker_build
@@ -62,6 +68,7 @@ jobs:
           file: ./app/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.prep.outputs.tags }}
+     
           
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
