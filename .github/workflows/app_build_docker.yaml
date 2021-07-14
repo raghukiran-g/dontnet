@@ -33,4 +33,5 @@ jobs:
 
       - name: Update Image Version in the related HelmChart values.yaml
         run: |
+          apt-get install -y yq
           yq --help
