@@ -51,7 +51,7 @@ jobs:
         uses: fjogeleit/yaml-update-action@master
         with:
           valueFile: 'values.yaml'
-          propertyPath: 'backend.version'
+          propertyPath: 'image.tag'
           value: ${{ steps.docker_build.outputs.digest }}
           targetBranch: development
           createPR: true
