@@ -50,6 +50,9 @@ jobs:
         run: |
           mkdir -p app/publish
           touch app/publish/testfile
+          ls -la
+          tree .
+
       
       - name: Build and push
         id: docker_build
