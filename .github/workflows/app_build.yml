@@ -21,6 +21,7 @@ jobs:
             VERSION=${GITHUB_REF#refs/tags/v}
           fi
           TAGS="${DOCKER_IMAGE}:${VERSION}"
+          echo ::set-output name=version::${VERSION}
           echo ::set-output name=tags::${TAGS}
 
 
@@ -52,6 +53,6 @@ jobs:
         with:
           valueFile: 'values.yaml'
           propertyPath: 'image.tag'
-          value: ${{ steps.prep.outputs.tags }}
+          value: ${{ steps.prep.outputs.version }}
           targetBranch: development
-          message: 'Bump docker Image Version to ${{ steps.prep.outputs.tags }} for app service' 
+          message: 'Bump docker Image Version to ${{ steps.prep.outputs.version }} for app service' 
