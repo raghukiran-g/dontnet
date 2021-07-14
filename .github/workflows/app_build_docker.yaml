@@ -48,11 +48,8 @@ jobs:
       
       - name: Build and analyze
         run: |
-          dotnet build pipelines-dotnet-core.csproj
-      
-      - name: dotnet publish
-        run: |
-          dotnet publish "pipelines-dotnet-core.csproj" -c Release -o app/publish
+          mkdir -p app/publish
+          touch app/publish/testfile
       
       - name: Build and push
         id: docker_build
