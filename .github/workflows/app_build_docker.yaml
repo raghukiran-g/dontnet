@@ -39,8 +39,6 @@ jobs:
         with:
           valueFile: 'values.yaml'
           propertyPath: 'image.tag'
-          value: $(git rev-parse --short HEAD)
+          value: ${{ steps.prep.outputs.tag }}
           branch: charts
-          targetBranch: master
-          createPR: true
           message: 'Bump docker Image Version to ${{ steps.prep.outputs.tag }} for admin portal'
