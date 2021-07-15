@@ -42,7 +42,7 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: Package
-        path: staging
+        path: $GITHUB_WORKSPACE/staging
   
   build-docker-image:
     name: Publish to Docker Hub
