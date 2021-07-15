@@ -76,6 +76,7 @@ jobs:
     if: 
           contains('refs/heads/maven', github.ref)
     steps:
+    - uses: actions/checkout@v2
     - name: Set image TAG
       id: vars
       run: |
