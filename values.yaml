@@ -3,4 +3,4 @@ replicaCount: 2
 image:
   repository: raghukiran/app
   pullPolicy: IfNotPresent
-  tag: fe34bb1
+  tag: 240c1b2
