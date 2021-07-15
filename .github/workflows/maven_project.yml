@@ -72,11 +72,13 @@ jobs:
           tree .
           TAG=$(git rev-parse --short HEAD)
           echo ::set-output name=tag::${TAG}
-          docker build -t ${DOCKER_IMAGE}:${TAG} -f Dockerfile .
-      - name: Publish Docker image
-        run: docker push ${DOCKER_IMAGE}:${TAG}
+          docker build -t sample-maven-image:${TAG} -f Dockerfile .
       - uses: actions/download-artifact@v1
         with:
           name: Package
           path: staging
+      - name: Publish Docker image
+        run: docker push sample-maven-image:${TAG}
+      
+
 
