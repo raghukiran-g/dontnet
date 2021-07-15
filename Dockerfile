@@ -1,8 +1,8 @@
 FROM openjdk:14-slim
-ARG SOURCE=target
-RUN echo "Hey there! Welcome to $SOURCE" > greeting.txt
+ARG JAR_ARTIFACT=src
+RUN echo "Hey there! Welcome to $JAR_ARTIFACT" > greeting.txt
 CMD cat greeting.txt
 WORKDIR /app
-COPY staging/*.jar app.jar
+COPY $JAR_ARTIFACT/*.jar app.jar
 EXPOSE 6379
 ENTRYPOINT ["java","-jar","app.jar"]
