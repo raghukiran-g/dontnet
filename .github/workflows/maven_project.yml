@@ -79,6 +79,9 @@ jobs:
     - name: Set image TAG
       id: vars
       run: |
+         ls -la
+         pwd
+         tree .
          TAG=$(git rev-parse --short HEAD)
          echo ::set-output name=tag::${TAG}
 
