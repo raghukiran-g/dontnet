@@ -91,6 +91,6 @@ jobs:
       with:
         valueFile: 'values.yaml'
         propertyPath: 'image.tag'
-        value: ${{ steps.build.outputs.tag }}
+        value: ${{ steps.vars.outputs.tag }}
         branch: charts
         message: 'Bump docker Image Version to ${{ steps.build.outputs.tag }} in helm chart'
