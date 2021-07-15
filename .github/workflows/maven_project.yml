@@ -67,7 +67,7 @@ jobs:
         run: |
           TAG=$(git rev-parse --short HEAD)
           echo ::set-output name=tag::${TAG}
-          docker build . -f Dockerfile -t ${DOCKER_IMAGE}:${TAG}
+          docker build . -f Dockerfile -t ${DOCKER_IMAGE}:${TAG} --build-args source=${GITHUB_WORKSPACE}
           docker push ${DOCKER_IMAGE}:${TAG}
         env:
           DOCKER_IMAGE: "raghukiran/sample-mvn-app"
