@@ -39,6 +39,8 @@ jobs:
       run: |
        mvn -B package --file pom.xml
        mkdir staging && cp target/*jar-with-dependencies.jar staging/
+       echo "This is the var value1 $GITHUB_WORKSPACE"
+       echo "This is the var value2 ${GITHUB_WORKSPACE}"
     - uses: actions/upload-artifact@v1
       with:
         name: Package
